@@ -1,0 +1,303 @@
+---
+const cars = [
+  // City Cars
+  { name: "Kia Picanto", color: "Grey", category: "City Car", transmission: "Automatic", images: ["/Cars/kia-picanto-grey.jpg"] },
+  { name: "Kia Picanto", color: "Black", category: "City Car", transmission: "Automatic", images: ["/Cars/kia-picanto-black.jpg", "/Cars/kia-picanto-black2.jpg"] },
+  { name: "Hyundai i10", color: "Silver", category: "City Car", transmission: "Manual", images: ["/Cars/hyundai-i10-silver.jpg", "/Cars/hyundai-i10-silver2.jpg"] },
+  // Hatchbacks
+  { name: "Suzuki Swift", color: "Grey", category: "Hatchback", transmission: "Automatic", images: ["/Cars/suzuki-swift-grey.jpg", "/Cars/suzuki-swift-grey2.jpg"] },
+  { name: "Suzuki Swift", color: "Red", category: "Hatchback", transmission: "Automatic", images: ["/Cars/suzuki-swift-red.jpg", "/Cars/suzuki-swift-red2.jpg", "/Cars/suzuki-swift-red3.jpg"] },
+  { name: "Suzuki Swift", color: "Blue", category: "Hatchback", transmission: "Automatic", images: ["/Cars/suzuki-swift-blue.jpg", "/Cars/suzuki-swift-blue2.jpg"] },
+  { name: "SEAT Ibiza", color: "Black", category: "Hatchback", transmission: "Manual", images: ["/Cars/seat-ibiza-black.jpg", "/Cars/seat-ibiza-black2.jpg", "/Cars/seat-ibiza-black3.jpg"] },
+  { name: "SEAT Ibiza", color: "White", category: "Hatchback", transmission: "Manual", images: ["/Cars/seat-ibiza-white.jpg", "/Cars/seat-ibiza-white2.jpg"] },
+  // Sedans
+  { name: "MG 5 GT", color: "Black", category: "Sedan", transmission: "Automatic", images: ["/Cars/mg5-black.jpg", "/Cars/mg5-black2.jpg", "/Cars/mg5-black3.jpg", "/Cars/mg5-black4.jpg"] },
+  { name: "Chery Arrizo 5", color: "Black", category: "Sedan", transmission: "Automatic", images: ["/Cars/chery-arrizo5-black.jpg", "/Cars/chery-arrizo5-black2.jpg"] },
+  { name: "Chery Arrizo 5", color: "White", category: "Sedan", transmission: "Automatic", images: ["/Cars/chery-arrizo5-white.jpg", "/Cars/chery-arrizo5-white2.jpg", "/Cars/chery-arrizo5-white3.jpg"] },
+  { name: "Changan Alsvin", color: "Black", category: "Sedan", transmission: "Automatic", images: ["/Cars/changan-black.jpg", "/Cars/changan-black2.jpg"] },
+  // SUVs
+  { name: "Kia Stonic", color: "Blue", category: "SUV", transmission: "Automatic", images: ["/Cars/kia-stonic-blue.jpg", "/Cars/kia-stonic-blue2.jpg"] },
+  { name: "MG ZS", color: "Silver", category: "SUV", transmission: "Automatic", images: ["/Cars/mg-zs-silver.jpg", "/Cars/mg-zs-silver2.jpg", "/Cars/mg-zs-silver3.jpg"] },
+  { name: "Mahindra XUV", color: "Red", category: "SUV", transmission: "Automatic", images: ["/Cars/mahindra-red.jpg", "/Cars/mahindra-red2.jpg"] },
+  { name: "Mahindra XUV", color: "White", category: "SUV", transmission: "Automatic", images: ["/Cars/mahindra-white.jpg"] },
+  { name: "VW T-Cross", color: "Silver", category: "SUV", transmission: "Automatic", images: ["/Cars/vw-tcross-silver.jpg", "/Cars/vw-tcross-silver2.jpg"] },
+  { name: "VW T-Cross", color: "Grey", category: "SUV", transmission: "Automatic", images: ["/Cars/vw-tcross-grey.jpg", "/Cars/vw-tcross-grey2.jpg"] },
+  { name: "VW Tiguan", color: "Black", category: "SUV", transmission: "Automatic", images: ["/Cars/vw-tiguan-black.jpg", "/Cars/vw-tiguan-black2.jpg", "/Cars/vw-tiguan-black3.jpg"] },
+  { name: "Chery Tiggo 7 Pro", color: "Black", category: "SUV", transmission: "Automatic", images: ["/Cars/chery-tiggo7-black.jpg", "/Cars/chery-tiggo7-black2.jpg", "/Cars/chery-tiggo7-black3.jpg"] },
+  { name: "Chery Tiggo 7 Pro", color: "White", category: "SUV", transmission: "Automatic", images: ["/Cars/chery-tiggo7-white.jpg", "/Cars/chery-tiggo7-white2.jpg", "/Cars/chery-tiggo7-white3.jpg"] },
+  { name: "Bestune T77", color: "White", category: "SUV", transmission: "Automatic", images: ["/Cars/bestune-t77-white.jpg", "/Cars/bestune-t77-white2.jpg", "/Cars/bestune-t77-white3.jpg"] },
+  { name: "Renault Austral", color: "Dark Grey", category: "SUV", transmission: "Automatic", images: ["/Cars/renault-suv.jpg"] },
+  // Premium
+  { name: "Mercedes GLB 200", color: "Black", category: "Premium", transmission: "Automatic", images: ["/Cars/mercedes-glb-black.jpg", "/Cars/mercedes-glb-black2.jpg", "/Cars/mercedes-glb-black3.jpg"] },
+]
+
+const categories = ["All", "City Car", "Hatchback", "Sedan", "SUV", "Premium"]
+---
+
+<section id="fleet" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-[#0D0D0D] mb-2">Our Fleet</h2>
+    <p class="text-center text-gray-500 mb-10">New & well-maintained vehicles for every trip</p>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-bar">
+      {categories.map(cat => (
+        <button
+          data-filter={cat}
+          class={`px-5 py-2 rounded-full text-sm font-medium border transition ${cat === 'All' ? 'bg-yellow-600 text-black border-yellow-600' : 'bg-white text-gray-700 border-gray-300 hover:border-yellow-600 hover:text-yellow-600'}`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cars-grid">
+      {cars.map((car, cardIndex) => (
+        <div
+          class="car-card bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
+          data-category={car.category}
+          data-name={car.name}
+          data-color={car.color}
+          data-transmission={car.transmission}
+          data-images={JSON.stringify(car.images)}
+          data-index="0"
+        >
+          <!-- Image gallery area -->
+          <div class="relative h-52 bg-gray-100 overflow-hidden group">
+            {car.images.map((img, i) => (
+              <img
+                src={img}
+                alt={`${car.name} ${car.color} - photo ${i+1}`}
+                class={`gallery-img absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+                data-img-index={i}
+                onerror="this.style.display='none'"
+              />
+            ))}
+
+            <!-- Arrows (only show if more than 1 image) -->
+            {car.images.length > 1 && (
+              <>
+                <button
+                  class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10 text-lg leading-none"
+                  aria-label="Previous photo"
+                >‹</button>
+                <button
+                  class="next-btn absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10 text-lg leading-none"
+                  aria-label="Next photo"
+                >›</button>
+                <!-- Dots -->
+                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+                  {car.images.map((_, i) => (
+                    <span
+                      class={`dot w-1.5 h-1.5 rounded-full transition-all ${i === 0 ? 'bg-white scale-125' : 'bg-white/50'}`}
+                      data-dot-index={i}
+                    ></span>
+                  ))}
+                </div>
+              </>
+            )}
+
+            <!-- Photo count badge -->
+            {car.images.length > 1 && (
+              <span class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded-full z-10">
+                <span class="current-count">1</span>/{car.images.length}
+              </span>
+            )}
+          </div>
+
+          <!-- Card info -->
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-lg font-bold text-[#0D0D0D]">{car.name}</h3>
+              <span class={`text-xs font-semibold px-2 py-1 rounded-full ${car.category === 'Premium' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-600'}`}>
+                {car.category}
+              </span>
+            </div>
+            <div class="flex gap-2 mb-4">
+              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{car.color}</span>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{car.transmission}</span>
+            </div>
+            <button class="book-btn w-full border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black font-semibold py-2 rounded-lg transition">
+              Request This Car
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="car-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-3" style="display:none">
+  <div class="bg-white rounded-2xl max-w-lg w-full shadow-2xl flex flex-col" style="max-height:95vh">
+
+    <!-- Image -->
+    <div class="relative bg-gray-100 flex-shrink-0 overflow-hidden" style="height:45vh">
+      <img id="modal-image" src="" alt="" class="w-full object-cover" style="height:45vh"/>
+      <button id="modal-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg hidden">‹</button>
+      <button id="modal-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg hidden">›</button>
+      <span id="modal-counter" class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded-full hidden"></span>
+    </div>
+
+    <!-- Info -->
+    <div class="p-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <h3 id="modal-name" class="text-lg font-bold text-[#0D0D0D]"></h3>
+        <span id="modal-category" class="text-xs bg-yellow-100 text-yellow-700 font-semibold px-3 py-1 rounded-full"></span>
+      </div>
+      <div class="flex gap-2">
+        <span id="modal-color" class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full"></span>
+        <span id="modal-transmission" class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full"></span>
+      </div>
+      <div class="flex gap-3">
+        <button id="modal-close" class="flex-1 border-2 border-gray-300 text-gray-600 hover:border-yellow-600 hover:text-yellow-600 font-semibold py-2.5 rounded-lg transition text-sm">
+          Close
+        </button>
+        <button id="modal-book" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-black font-semibold py-2.5 rounded-lg text-center transition text-sm">
+          Book This Car
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ── Filter bar ──────────────────────────────────────────────
+  const filterBtns = document.querySelectorAll('#filter-bar button');
+  const cards = document.querySelectorAll('.car-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-yellow-600', 'text-black', 'border-yellow-600');
+        b.classList.add('bg-white', 'text-gray-700', 'border-gray-300');
+      });
+      btn.classList.add('bg-yellow-600', 'text-black', 'border-yellow-600');
+      btn.classList.remove('bg-white', 'text-gray-700', 'border-gray-300');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'All' || card.dataset.category === filter) ? 'block' : 'none';
+      });
+    });
+  });
+
+  // ── Card gallery (prev/next arrows on cards) ────────────────
+  cards.forEach(card => {
+    const imgs = card.querySelectorAll('.gallery-img');
+    const dots = card.querySelectorAll('.dot');
+    const counter = card.querySelector('.current-count');
+    const prevBtn = card.querySelector('.prev-btn');
+    const nextBtn = card.querySelector('.next-btn');
+    let current = 0;
+
+    function showSlide(n) {
+      imgs[current].classList.replace('opacity-100', 'opacity-0');
+      if (dots[current]) dots[current].classList.remove('bg-white', 'scale-125');
+      if (dots[current]) dots[current].classList.add('bg-white/50');
+      current = (n + imgs.length) % imgs.length;
+      imgs[current].classList.replace('opacity-0', 'opacity-100');
+      if (dots[current]) dots[current].classList.remove('bg-white/50');
+      if (dots[current]) dots[current].classList.add('bg-white', 'scale-125');
+      if (counter) counter.textContent = current + 1;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showSlide(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showSlide(current + 1); });
+  });
+
+  // ── Modal ───────────────────────────────────────────────────
+  const modal = document.getElementById('car-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalName = document.getElementById('modal-name');
+  const modalCategory = document.getElementById('modal-category');
+  const modalColor = document.getElementById('modal-color');
+  const modalTransmission = document.getElementById('modal-transmission');
+  const modalClose = document.getElementById('modal-close');
+  const modalPrev = document.getElementById('modal-prev');
+  const modalNext = document.getElementById('modal-next');
+  const modalCounter = document.getElementById('modal-counter');
+  const modalBook = document.getElementById('modal-book');
+
+  let modalImages = [];
+  let modalIndex = 0;
+  let modalCarName = '';
+
+  function updateModal() {
+    modalImage.src = modalImages[modalIndex];
+    modalCounter.textContent = `${modalIndex + 1} / ${modalImages.length}`;
+  }
+
+  cards.forEach(card => {
+    // ── Request This Car button on card ──
+    const bookBtn = card.querySelector('.book-btn');
+    if (bookBtn) {
+      bookBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const carName = card.dataset.name + ' — ' + card.dataset.color;
+        if (window.selectCar) window.selectCar(carName);
+      });
+    }
+
+    card.addEventListener('click', (e) => {
+      if (e.target.classList.contains('book-btn') ||
+          e.target.classList.contains('prev-btn') ||
+          e.target.classList.contains('next-btn')) return;
+
+      modalImages = JSON.parse(card.dataset.images);
+      modalIndex = parseInt(card.dataset.index || '0');
+      modalCarName = card.dataset.name + ' — ' + card.dataset.color;
+
+      // sync modal index with card's current slide
+      const currentImg = card.querySelector('.gallery-img.opacity-100');
+      if (currentImg) modalIndex = parseInt(currentImg.dataset.imgIndex) || 0;
+
+      modalName.textContent = modalCarName;
+      modalCategory.textContent = card.dataset.category;
+      modalColor.textContent = card.dataset.color;
+      modalTransmission.textContent = card.dataset.transmission;
+
+      if (modalImages.length > 1) {
+        modalPrev.classList.remove('hidden');
+        modalNext.classList.remove('hidden');
+        modalCounter.classList.remove('hidden');
+      } else {
+        modalPrev.classList.add('hidden');
+        modalNext.classList.add('hidden');
+        modalCounter.classList.add('hidden');
+      }
+
+      updateModal();
+      modal.style.display = 'flex';
+    });
+  });
+
+  modalBook.addEventListener('click', () => {
+    modal.style.display = 'none';
+    if (window.selectCar) window.selectCar(modalCarName);
+  });
+
+  modalBook.addEventListener('click', () => {
+    modal.style.display = 'none';
+    if (window.selectCar) window.selectCar(modalCarName);
+  });
+
+  modalBook.addEventListener('click', () => {
+    modal.style.display = 'none';
+    if (window.selectCar) window.selectCar(modalCarName);
+  });
+
+  modalBook.addEventListener('click', () => {
+    modal.style.display = 'none';
+    if (window.selectCar) window.selectCar(modalCarName);
+  });
+
+  modalPrev.addEventListener('click', () => { modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length; updateModal(); });
+  modalNext.addEventListener('click', () => { modalIndex = (modalIndex + 1) % modalImages.length; updateModal(); });
+  modalClose.addEventListener('click', () => { modal.style.display = 'none'; });
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') modal.style.display = 'none';
+    if (e.key === 'ArrowLeft' && modal.style.display === 'flex') { modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length; updateModal(); }
+    if (e.key === 'ArrowRight' && modal.style.display === 'flex') { modalIndex = (modalIndex + 1) % modalImages.length; updateModal(); }
+  });
+</script>

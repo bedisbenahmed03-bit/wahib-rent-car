@@ -1,0 +1,131 @@
+---
+---
+<section id="home" class="min-h-screen bg-black flex items-center pt-20 relative overflow-hidden">
+
+  <!-- Background logo watermark -->
+  <div class="absolute inset-0 flex items-center justify-center opacity-[0.17] pointer-events-none">
+    <img src="/logo.png" alt="" class="w-[700px]" />
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+    
+    <!-- Left: Text -->
+    <div class="text-white">
+      <h1 class="text-5xl font-bold leading-tight mb-4">
+        Your Journey <br/>
+        <span class="text-yellow-500">Starts Here</span>
+      </h1>
+      <p class="text-gray-300 text-lg mb-6">
+        Premium car rentals in Sousse, Tunisia — available 24/7
+      </p>
+      <div class="flex gap-6 text-sm text-gray-300">
+        <span>📍 Sousse, Tunisia</span>
+        <span>🕐 Open 24/7</span>
+        <span>✅ Trusted Service</span>
+      </div>
+    </div>
+
+    <!-- Right: Booking Form -->
+    <div class="bg-white rounded-2xl p-8 shadow-2xl">
+      <h2 class="text-2xl font-bold text-black mb-6 text-center">Book Your Car</h2>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-medium text-gray-700">Full Name</label>
+          <input type="text" placeholder="Your name" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="tel" placeholder="+216" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-700">Pick-up Date</label>
+          <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-700">Return Date</label>
+          <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="text-sm font-medium text-gray-700">Car of Interest</label>
+        <select id="car-select" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500">
+          <option value="">Select a car</option>
+          <option>Kia Picanto — Grey</option>
+          <option>Kia Picanto — Black</option>
+          <option>Kia Stonic — Blue</option>
+          <option>Hyundai i10 — Silver</option>
+          <option>Suzuki Swift — Grey</option>
+          <option>Suzuki Swift — Red</option>
+          <option>Suzuki Swift — Blue</option>
+          <option>SEAT Ibiza — Black</option>
+          <option>SEAT Ibiza — White</option>
+          <option>MG 5 GT — Black</option>
+          <option>MG ZS — Silver</option>
+          <option>Chery Arrizo 5 — Black</option>
+          <option>Chery Arrizo 5 — White</option>
+          <option>Chery Tiggo 7 Pro — Black</option>
+          <option>Chery Tiggo 7 Pro — White</option>
+          <option>VW T-Cross — Silver</option>
+          <option>VW T-Cross — Grey</option>
+          <option>VW Tiguan — Black</option>
+          <option>Mahindra XUV — Red</option>
+          <option>Mahindra XUV — White</option>
+          <option>Bestune T77 — White</option>
+          <option>Renault Austral — Dark Grey</option>
+          <option>Mercedes GLB 200 — Black</option>
+        </select>
+      </div>
+
+      <div class="mt-4">
+        <label class="text-sm font-medium text-gray-700">Driver Needed?</label>
+        <select id="driver-select" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500">
+          <option value="No driver">No — I'll drive myself</option>
+          <option value="Driver needed">Yes — I need a driver</option>
+        </select>
+      </div>
+
+      <div class="mt-4">
+        <label class="text-sm font-medium text-gray-700">Message</label>
+        <textarea id="message-input" placeholder="Any special requests..." rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"></textarea>
+      </div>
+
+      <a 
+        id="whatsapp-btn"
+        href="#"
+        class="mt-6 block w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg text-center transition"
+      >
+        Send Request via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('whatsapp-btn');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const name = document.querySelectorAll('input')[0].value;
+    const phone = document.querySelectorAll('input')[1].value;
+    const pickup = document.querySelectorAll('input')[2].value;
+    const returnDate = document.querySelectorAll('input')[3].value;
+    const car = document.getElementById('car-select').value;
+    const driver = document.getElementById('driver-select').value;
+    const message = document.getElementById('message-input').value;
+    const text = `Hello Wahib Rent Car!%0A%0AName: ${name}%0APhone: ${phone}%0APick-up: ${pickup}%0AReturn: ${returnDate}%0ACar: ${car}%0ADriver: ${driver}%0AMessage: ${message}`;
+    window.open(`https://wa.me/21650264600?text=${text}`, '_blank');
+  });
+
+  window.selectCar = function(carName) {
+    const select = document.getElementById('car-select');
+    for (let option of select.options) {
+      if (option.text === carName) {
+        option.selected = true;
+        break;
+      }
+    }
+    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
