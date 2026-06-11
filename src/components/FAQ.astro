@@ -2,27 +2,63 @@
 ---
 <section id="faq" class="py-20 bg-black">
   <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-white mb-2">FAQ</h2>
-    <p class="text-center text-gray-400 mb-12">Common questions answered</p>
+    <h2 class="text-4xl font-bold text-center text-white mb-2" data-i18n="faq_title">FAQ</h2>
+    <p class="text-center text-gray-400 mb-12" data-i18n="faq_subtitle">Common questions answered</p>
     <div class="space-y-4" id="faq-list">
-      {[
-        { q: "How do I make a reservation?", a: "Contact us directly via WhatsApp or fill the booking form on this page." },
-        { q: "Do you offer airport pickup?", a: "Yes, we offer pickup and dropoff at Enfidha and Monastir airports." },
-        { q: "What documents are required?", a: "A valid national ID or passport and a driver's license." },
-        { q: "Is there a minimum rental period?", a: "Minimum rental is 1 day." },
-        { q: "Do you have automatic transmission cars?", a: "Yes, we have automatic transmission vehicles available." },
-        { q: "Are prices negotiable for long-term rentals?", a: "Yes, we offer special rates for weekly and monthly rentals." },
-      ].map((item, i) => (
-        <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
-          <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
-            {item.q}
-            <span class="faq-icon text-yellow-500 text-xl">+</span>
-          </button>
-          <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20">
-            {item.a}
-          </div>
+      <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
+          <span data-i18n="faq_q1">How do I make a reservation?</span>
+          <span class="faq-icon text-yellow-500 text-xl">+</span>
+        </button>
+        <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20" data-i18n="faq_a1">
+          Contact us directly via WhatsApp or fill the booking form on this page.
         </div>
-      ))}
+      </div>
+      <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
+          <span data-i18n="faq_q2">Do you offer airport pickup?</span>
+          <span class="faq-icon text-yellow-500 text-xl">+</span>
+        </button>
+        <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20" data-i18n="faq_a2">
+          Yes, we offer pickup and dropoff at Enfidha and Monastir airports.
+        </div>
+      </div>
+      <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
+          <span data-i18n="faq_q3">What documents are required?</span>
+          <span class="faq-icon text-yellow-500 text-xl">+</span>
+        </button>
+        <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20" data-i18n="faq_a3">
+          A valid national ID or passport and a driver's license.
+        </div>
+      </div>
+      <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
+          <span data-i18n="faq_q4">Is there a minimum rental period?</span>
+          <span class="faq-icon text-yellow-500 text-xl">+</span>
+        </button>
+        <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20" data-i18n="faq_a4">
+          Minimum rental is 1 day.
+        </div>
+      </div>
+      <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
+          <span data-i18n="faq_q5">Do you have automatic transmission cars?</span>
+          <span class="faq-icon text-yellow-500 text-xl">+</span>
+        </button>
+        <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20" data-i18n="faq_a5">
+          Yes, we have automatic transmission vehicles available.
+        </div>
+      </div>
+      <div class="faq-item border border-yellow-700/20 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 text-white font-medium flex justify-between items-center hover:bg-zinc-900 transition">
+          <span data-i18n="faq_q6">Are prices negotiable for long-term rentals?</span>
+          <span class="faq-icon text-yellow-500 text-xl">+</span>
+        </button>
+        <div class="faq-answer hidden px-6 py-4 text-gray-400 text-sm border-t border-yellow-700/20" data-i18n="faq_a6">
+          Yes, we offer special rates for weekly and monthly rentals.
+        </div>
+      </div>
     </div>
   </div>
 </section>

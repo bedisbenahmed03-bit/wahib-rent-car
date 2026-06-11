@@ -2,56 +2,53 @@
 ---
 <section id="home" class="min-h-screen bg-black flex items-center pt-20 relative overflow-hidden">
 
-  <!-- Background logo watermark -->
   <div class="absolute inset-0 flex items-center justify-center opacity-[0.17] pointer-events-none">
     <img src="/logo.png" alt="" class="w-[700px]" />
   </div>
 
   <div class="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
     
-    <!-- Left: Text -->
     <div class="text-white">
       <h1 class="text-5xl font-bold leading-tight mb-4">
-        Your Journey <br/>
-        <span class="text-yellow-500">Starts Here</span>
+        <span data-i18n="hero_title1">Your Journey</span> <br/>
+        <span class="text-yellow-500" data-i18n="hero_title2">Starts Here</span>
       </h1>
-      <p class="text-gray-300 text-lg mb-6">
+      <p class="text-gray-300 text-lg mb-6" data-i18n="hero_subtitle">
         Premium car rentals in Sousse, Tunisia — available 24/7
       </p>
       <div class="flex gap-6 text-sm text-gray-300">
-        <span>📍 Sousse, Tunisia</span>
-        <span>🕐 Open 24/7</span>
-        <span>✅ Trusted Service</span>
+        <span data-i18n="hero_location">📍 Sousse, Tunisia</span>
+        <span data-i18n="hero_hours">🕐 Open 24/7</span>
+        <span data-i18n="hero_trusted">✅ Trusted Service</span>
       </div>
     </div>
 
-    <!-- Right: Booking Form -->
     <div class="bg-white rounded-2xl p-8 shadow-2xl">
-      <h2 class="text-2xl font-bold text-black mb-6 text-center">Book Your Car</h2>
+      <h2 class="text-2xl font-bold text-black mb-6 text-center" data-i18n="form_title">Book Your Car</h2>
       
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <label class="text-sm font-medium text-gray-700">Full Name</label>
-          <input type="text" placeholder="Your name" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
+          <label class="text-sm font-medium text-gray-700" data-i18n="form_name">Full Name</label>
+          <input type="text" data-i18n-placeholder="form_name_placeholder" placeholder="Your name" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
         </div>
         <div>
-          <label class="text-sm font-medium text-gray-700">Phone Number</label>
+          <label class="text-sm font-medium text-gray-700" data-i18n="form_phone">Phone Number</label>
           <input type="tel" placeholder="+216" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
         </div>
         <div>
-          <label class="text-sm font-medium text-gray-700">Pick-up Date</label>
+          <label class="text-sm font-medium text-gray-700" data-i18n="form_pickup">Pick-up Date</label>
           <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
         </div>
         <div>
-          <label class="text-sm font-medium text-gray-700">Return Date</label>
+          <label class="text-sm font-medium text-gray-700" data-i18n="form_return">Return Date</label>
           <input type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"/>
         </div>
       </div>
 
       <div class="mt-4">
-        <label class="text-sm font-medium text-gray-700">Car of Interest</label>
+        <label class="text-sm font-medium text-gray-700" data-i18n="form_car">Car of Interest</label>
         <select id="car-select" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500">
-          <option value="">Select a car</option>
+          <option value="" data-i18n="form_car_placeholder">Select a car</option>
           <option>Kia Picanto — Grey</option>
           <option>Kia Picanto — Black</option>
           <option>Kia Stonic — Blue</option>
@@ -79,27 +76,27 @@
       </div>
 
       <div class="mt-4">
-        <label class="text-sm font-medium text-gray-700">Driver Needed?</label>
+        <label class="text-sm font-medium text-gray-700" data-i18n="form_driver">Driver Needed?</label>
         <select id="driver-select" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500">
-          <option value="No driver">No — I'll drive myself</option>
-          <option value="Driver needed">Yes — I need a driver</option>
+          <option value="No driver" data-i18n="form_driver_no">No — I'll drive myself</option>
+          <option value="Driver needed" data-i18n="form_driver_yes">Yes — I need a driver</option>
         </select>
       </div>
 
       <div class="mt-4">
-        <label class="text-sm font-medium text-gray-700">Message</label>
-        <textarea id="message-input" placeholder="Any special requests..." rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"></textarea>
+        <label class="text-sm font-medium text-gray-700" data-i18n="form_message">Message</label>
+        <textarea id="message-input" data-i18n-placeholder="form_message_placeholder" placeholder="Any special requests..." rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm focus:outline-none focus:border-yellow-500"></textarea>
       </div>
 
       <a 
         id="whatsapp-btn"
         href="#"
         class="mt-6 block w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg text-center transition"
+        data-i18n="form_submit"
       >
         Send Request via WhatsApp
       </a>
     </div>
-
   </div>
 </section>
 

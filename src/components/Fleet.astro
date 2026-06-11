@@ -36,14 +36,15 @@ const categories = ["All", "City Car", "Hatchback", "Sedan", "SUV", "Premium"]
 
 <section id="fleet" class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-[#0D0D0D] mb-2">Our Fleet</h2>
-    <p class="text-center text-gray-500 mb-10">New & well-maintained vehicles for every trip</p>
+    <h2 class="text-4xl font-bold text-center text-[#0D0D0D] mb-2" data-i18n="fleet_title">Our Fleet</h2>
+<p class="text-center text-gray-500 mb-10" data-i18n="fleet_subtitle">New & well-maintained vehicles for every trip</p>
 
     <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-bar">
       {categories.map(cat => (
         <button
           data-filter={cat}
           class={`px-5 py-2 rounded-full text-sm font-medium border transition ${cat === 'All' ? 'bg-yellow-600 text-black border-yellow-600' : 'bg-white text-gray-700 border-gray-300 hover:border-yellow-600 hover:text-yellow-600'}`}
+data-i18n={cat === 'All' ? 'filter_all' : undefined}
         >
           {cat}
         </button>
@@ -108,17 +109,17 @@ const categories = ["All", "City Car", "Hatchback", "Sedan", "SUV", "Premium"]
           <div class="p-5">
             <div class="flex items-center justify-between mb-2">
               <h3 class="text-lg font-bold text-[#0D0D0D]">{car.name}</h3>
-              <span class={`text-xs font-semibold px-2 py-1 rounded-full ${car.category === 'Premium' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-600'}`}>
-                {car.category}
-              </span>
+              <span data-category-label={car.category} class={`text-xs font-semibold px-2 py-1 rounded-full ${car.category === 'Premium' ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-600'}`}>
+  {car.category}
+</span>
             </div>
             <div class="flex gap-2 mb-4">
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{car.color}</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{car.transmission}</span>
+              <span data-tag={car.color} class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{car.color}</span>
+<span data-tag={car.transmission} class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">{car.transmission}</span>
             </div>
-            <button class="book-btn w-full border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black font-semibold py-2 rounded-lg transition">
-              Request This Car
-            </button>
+            <button class="book-btn w-full border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black font-semibold py-2 rounded-lg transition" data-carname="" data-i18n="fleet_request">
+  Request This Car
+</button>
           </div>
         </div>
       ))}
@@ -149,12 +150,12 @@ const categories = ["All", "City Car", "Hatchback", "Sedan", "SUV", "Premium"]
         <span id="modal-transmission" class="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full"></span>
       </div>
       <div class="flex gap-3">
-        <button id="modal-close" class="flex-1 border-2 border-gray-300 text-gray-600 hover:border-yellow-600 hover:text-yellow-600 font-semibold py-2.5 rounded-lg transition text-sm">
-          Close
-        </button>
-        <button id="modal-book" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-black font-semibold py-2.5 rounded-lg text-center transition text-sm">
-          Book This Car
-        </button>
+        <button id="modal-close" class="flex-1 border-2 border-gray-300 text-gray-600 hover:border-yellow-600 hover:text-yellow-600 font-semibold py-2.5 rounded-lg transition text-sm" data-i18n="fleet_close">
+  Close
+</button>
+<button id="modal-book" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-black font-semibold py-2.5 rounded-lg text-center transition text-sm" data-i18n="fleet_book">
+  Book This Car
+</button>
       </div>
     </div>
 
