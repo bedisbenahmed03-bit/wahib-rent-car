@@ -2,9 +2,13 @@
 ---
 <nav class="fixed top-0 left-0 w-full z-50 bg-black border-b border-yellow-700/30">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    
+    <!-- Logo -->
     <a href="/">
-      <img src="/logo.png" alt="Wahib Rent Car" class="h-32 w-auto object-left" />
+      <img src="/logo.png" alt="Wahib Rent Car" class="h-14 md:h-24 w-auto" />
     </a>
+
+    <!-- Desktop nav links -->
     <div class="hidden md:flex items-center gap-8 text-white text-sm font-medium">
       <a href="#fleet" class="hover:text-yellow-500 transition" data-i18n="nav_fleet">Fleet</a>
       <a href="#services" class="hover:text-yellow-500 transition" data-i18n="nav_services">Services</a>
@@ -12,16 +16,44 @@
       <a href="#faq" class="hover:text-yellow-500 transition" data-i18n="nav_faq">FAQ</a>
       <a href="#contact" class="hover:text-yellow-500 transition" data-i18n="nav_contact">Contact</a>
     </div>
-    <div class="flex items-center gap-3">
+
+    <!-- Right side -->
+    <div class="flex items-center gap-2">
       <!-- Language switcher -->
       <div class="flex items-center gap-1 text-xs font-bold">
         <button onclick="setLang('en')" id="lang-en" class="lang-btn px-2 py-1 rounded text-yellow-500 border border-yellow-500">EN</button>
         <button onclick="setLang('fr')" id="lang-fr" class="lang-btn px-2 py-1 rounded text-gray-400 border border-gray-600 hover:border-yellow-500 hover:text-yellow-500 transition">FR</button>
         <button onclick="setLang('ar')" id="lang-ar" class="lang-btn px-2 py-1 rounded text-gray-400 border border-gray-600 hover:border-yellow-500 hover:text-yellow-500 transition">AR</button>
       </div>
-      <a href="#contact" class="bg-yellow-600 hover:bg-yellow-500 text-black font-bold px-5 py-2 rounded transition" data-i18n="nav_book">
+      <!-- Book Now - hidden on mobile -->
+      <a href="#contact" class="hidden md:block bg-yellow-600 hover:bg-yellow-500 text-black font-bold px-5 py-2 rounded transition" data-i18n="nav_book">
         Book Now
       </a>
+      <!-- Hamburger - mobile only -->
+      <button id="menu-btn" class="md:hidden text-white p-2" onclick="toggleMenu()">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-yellow-700/30 px-4 py-4 flex flex-col gap-4">
+    <a href="#fleet" onclick="toggleMenu()" class="text-white hover:text-yellow-500 transition text-sm font-medium" data-i18n="nav_fleet">Fleet</a>
+    <a href="#services" onclick="toggleMenu()" class="text-white hover:text-yellow-500 transition text-sm font-medium" data-i18n="nav_services">Services</a>
+    <a href="#why-us" onclick="toggleMenu()" class="text-white hover:text-yellow-500 transition text-sm font-medium" data-i18n="nav_whyus">Why Us</a>
+    <a href="#faq" onclick="toggleMenu()" class="text-white hover:text-yellow-500 transition text-sm font-medium" data-i18n="nav_faq">FAQ</a>
+    <a href="#contact" onclick="toggleMenu()" class="text-white hover:text-yellow-500 transition text-sm font-medium" data-i18n="nav_contact">Contact</a>
+    <a href="#contact" onclick="toggleMenu()" class="bg-yellow-600 hover:bg-yellow-500 text-black font-bold px-5 py-2 rounded transition text-center" data-i18n="nav_book">
+      Book Now
+    </a>
+  </div>
 </nav>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  }
+</script>
